@@ -1,5 +1,5 @@
 before_script:
-  - ssh-keyscan -t rsa,dsa,ecdsa git.intranet.struktur.de gitserver.intranet.struktur.de github.com > /etc/ssh/ssh_known_hosts
+  - ssh-keyscan -t rsa,dsa,ecdsa github.com $ADDITIONAL_GIT_SERVERS > /etc/ssh/ssh_known_hosts
 
 mirror-master:
   stage: deploy
