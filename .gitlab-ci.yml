@@ -7,6 +7,7 @@ mirror-master:
     - master
   script:
     - git remote add github git@github.com:fancycode/mirror-test.git || true
+    - git fetch github
     - git push github master
 
 mirror-tags:
@@ -15,4 +16,5 @@ mirror-tags:
     - tags
   script:
     - git remote add github git@github.com:fancycode/mirror-test.git || true
+    - git fetch github
     - git push --tags github
