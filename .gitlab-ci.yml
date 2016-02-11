@@ -1,21 +1,24 @@
 before_script:
   - ssh-keyscan -t rsa,dsa,ecdsa github.com $ADDITIONAL_GIT_SERVERS > /etc/ssh/ssh_known_hosts
-  - export
+
+variables:
+  UPSTREAM_REPOSITORY: "git@github.com:fancycode/mirror-test.git"
+  UPSTREAM_BRANCH: "master"
 
 mirror-master:
   stage: deploy
   only:
     - master
   script:
-    - git remote add github git@github.com:fancycode/mirror-test.git || true
-    - git fetch github
-    - git push --progress github HEAD:master
+    - git remote add upstream $UPSTREAM_REPOSITORY || true
+    - git fetch upstream
+    - git push --progress upstream HEAD:$UPSTREAM_BRANCH
 
 mirror-tags:
   stage: deploy
   only:
     - tags
   script:
-    - git remote add github git@github.com:fancycode/mirror-test.git || true
-    - git fetch github
-    - git push --progress --tags github
+    - git remote add upstream $UPSTREAM_REPOSITORY || true
+    - git fetch upstream
+    - git push --progress --tags upstream
