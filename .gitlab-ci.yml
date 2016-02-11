@@ -1,5 +1,6 @@
 before_script:
   - ssh-keyscan -t rsa,dsa,ecdsa github.com $ADDITIONAL_GIT_SERVERS > /etc/ssh/ssh_known_hosts
+  - export
 
 mirror-master:
   stage: deploy
