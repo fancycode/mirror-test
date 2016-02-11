@@ -8,7 +8,7 @@ mirror-master:
   script:
     - git remote add github git@github.com:fancycode/mirror-test.git || true
     - git fetch github
-    - git push github HEAD
+    - git push github refs/heads/master
 
 mirror-tags:
   stage: deploy
