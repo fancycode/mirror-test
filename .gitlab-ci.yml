@@ -1,0 +1,15 @@
+mirror-master:
+  stage: deploy
+  only:
+    - master
+  scripts:
+    - git remote add github git@github.com:fancycode/mirror-test.git || true
+    - git push github master
+
+mirror-tags:
+  stage: deploy
+  only:
+    - tags
+  scripts:
+    - git remote add github git@github.com:fancycode/mirror-test.git || true
+    - git push --tags github
